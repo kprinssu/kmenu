@@ -1,0 +1,6 @@
+[submodule "vitamenulib"]
+	path = vitamenulib
+	url = https://github.com/kprinssu/vitamenulib.git
+[submodule "UVLoader"]
+	path = UVLoader
+	url = https://github.com/yifanlu/UVLoader.git
