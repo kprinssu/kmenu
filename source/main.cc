@@ -5,13 +5,17 @@
 
 #include <string>
 #include <cstdio>
-#include <cstdlib>
 #include <vita2d.h>
 
 #include "../vitamenulib/libvitamenu/menu_manager.h"
 #include "../vitamenulib/libvitamenu/menu.h"
 #include "../vitamenulib/libvitamenu/menu_item.h"
 #include "../vitamenulib/libvitamenu/utils.h"
+
+//UVLoader is in C, kmenu is C++
+extern "C" { 
+	#include "../uvloader/uvloader.h"
+}
 
 PSP2_MODULE_INFO(0, 0, "kmenu");
 
@@ -29,38 +33,18 @@ int main() {
 	log("Starting");
 	vita2d_init();
 
-	char menu_name[] = "Sample Menu";
-	char menu_name2[] = "Sample Child Menu";
-	char item1_name[] = "Item 1";
-	char item2_name[] = "Item 2";
-	char item3_name[] = "Item 3";
+	char menu_name[] = "kMenu";
+	char test_menuitem_name[] = "Run a test";
 
-	char back_name[] = "Back";
-
-  	char background_file[] = "cache0:/VitaDefilerClient/Documents/test.png";
+	char background_file[] = "cache0:/VitaDefilerClient/Documents/test.png";
+	char test_homebrew_file[] = "cache0:/VitaDefilerClient/Documents/helloworld.elf";
 
   	MenuManager * manager = new MenuManager();
 
 	Menu * menu = new Menu(manager, 100, 50);
 	menu->setName(&menu_name[0]);
-	menu->setBackground(&background_file[0]);
-
-	menu->addMenuItem(new MenuItem(&item1_name[0], 100, 100, &test_function));
-	menu->addMenuItem(new MenuItem(&item2_name[0], 100, 116, &test_function));
-	menu->addMenuItem(new MenuItem(&item3_name[0], 100, 132, &test_function));
-
-	Menu * secondMenu = new Menu(manager, 100, 50);
-	secondMenu->setName(&menu_name2[0]);
-	secondMenu->setBackground(RED);
-
-	secondMenu->addMenuItem(new MenuItem(&item1_name[0], 100, 100, &test_function));
-	secondMenu->addMenuItem(new MenuItem(&item2_name[0], 100, 116, &test_function));
-	secondMenu->addMenuItem(new MenuItem(&item3_name[0], 100, 132, &test_function));
-	secondMenu->setPrevMenu(menu, &back_name[0], 100, 148);
-
-	manager->changeMenu(secondMenu);
-
-	log("Menu loaded");
+	menu->setBackground(RED);
+	menu->addMenuItem(new MenuItem(&test_menuitem_name[0], 100, 100, &test_function));
 
 	//input for both touch and joysticks
 	SceCtrlData pad;

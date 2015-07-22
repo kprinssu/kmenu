@@ -1,1 +1,2 @@
-*.elf
+kmenu.elf
+kmenu_fixup.elf
