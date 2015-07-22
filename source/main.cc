@@ -24,9 +24,19 @@ void log(std::string s)
 	printf("%s%s", s.c_str(), "\n");
 }
 
-void test_function()
-{
-	log("I was called!");
+void load_helloworld()
+{	
+	char test_homebrew_file[] = "cache0:/VitaDefilerClient/Documents/helloworld.elf";
+
+
+	if(uvl_load(&test_homebrew_file[0]) < 0)
+	{
+		log("Hello world failed to load!");
+	}
+	else
+	{
+		log("Hello world loaded!");
+	}
 }
 
 int main() {
@@ -36,15 +46,14 @@ int main() {
 	char menu_name[] = "kMenu";
 	char test_menuitem_name[] = "Run a test";
 
-	char background_file[] = "cache0:/VitaDefilerClient/Documents/test.png";
-	char test_homebrew_file[] = "cache0:/VitaDefilerClient/Documents/helloworld.elf";
+	char background_file[] = "cache0:/VitaDefilerClient/Documents/splash.png";
 
   	MenuManager * manager = new MenuManager();
 
 	Menu * menu = new Menu(manager, 100, 50);
 	menu->setName(&menu_name[0]);
-	menu->setBackground(RED);
-	menu->addMenuItem(new MenuItem(&test_menuitem_name[0], 100, 100, &test_function));
+	menu->setBackground(&background_file[0]);
+	menu->addMenuItem(new MenuItem(&test_menuitem_name[0], 100, 100, &load_helloworld));
 
 	//input for both touch and joysticks
 	SceCtrlData pad;
