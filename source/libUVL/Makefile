@@ -13,13 +13,13 @@ $(TARGET): $(OBJS)
 	ar rvs $@ $^
 
 UVL_head.o: UVL.S
-	$(CC) -DHEAD -c $< -o $@
+	$(CC) $(CFLAGS) -DHEAD -c $< -o $@
 
 UVL_NIDS.o: UVL.S
-	$(CC) -DNIDS -c $< -o $@
+	$(CC) $(CFLAGS) -DNIDS -c $< -o $@
 
 $(ENTRIES): UVL.S
-	$(CC) -DFUNC=$(subst UVL_,0x,$*) $< -c -o $@
+	$(CC) $(CFLAGS) -DFUNC=$(subst UVL_,0x,$*) $< -c -o $@
 
 clean:
 	@rm -rf $(OBJS) $(TARGET)
