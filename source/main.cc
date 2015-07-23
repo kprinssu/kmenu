@@ -12,10 +12,7 @@
 #include "../vitamenulib/libvitamenu/menu_item.h"
 #include "../vitamenulib/libvitamenu/utils.h"
 
-//UVLoader is in C, kmenu is C++
-extern "C" { 
-	#include "uvloader.h"
-}
+#include "libUVL/libUVL.h"
 
 PSP2_MODULE_INFO(0, 0, "kmenu");
 
