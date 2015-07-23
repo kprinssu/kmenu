@@ -1,6 +1,6 @@
 TARGET = kmenu
 OBJS   = main.o 
-VITA_MENU_LIB = ../vitamenulib/libvitamenu/*.cc ../UVLoader/*.c
+VITA_MENU_LIB = ../vitamenulib/libvitamenu/*.cc
 
 LIBS = -lvita2d -lm -lpng -ljpeg -lz -lc_stub -lSceKernel_stub -lSceDisplay_stub -lSceGxm_stub	\
 	-lSceCtrl_stub -lSceTouch_stub

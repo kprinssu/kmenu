@@ -14,7 +14,7 @@
 
 //UVLoader is in C, kmenu is C++
 extern "C" { 
-	#include "../uvloader/uvloader.h"
+	#include "uvloader.h"
 }
 
 PSP2_MODULE_INFO(0, 0, "kmenu");
