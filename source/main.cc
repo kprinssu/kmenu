@@ -12,7 +12,9 @@
 #include "../vitamenulib/libvitamenu/menu_item.h"
 #include "../vitamenulib/libvitamenu/utils.h"
 
-#include "libUVL/libuvl.h"
+extern "C" {
+	#include "libUVL/libuvl.h"
+}
 
 PSP2_MODULE_INFO(0, 0, "kmenu");
 
